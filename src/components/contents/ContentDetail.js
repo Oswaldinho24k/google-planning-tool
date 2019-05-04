@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import ContentForm from './ContentForm';
 import ContentCard from './ContentCard';
 import './contents.css'
+import { saveContent, uploadFile } from '../../services/firebase'
+import { message } from 'antd';
 
 
 export class ContentDetail extends Component {
@@ -12,11 +14,49 @@ export class ContentDetail extends Component {
             imageURL: 'https://foodiezlivestorage.blob.core.windows.net/images-new/UploadedImages/Restaurants/8d5efd3d-cf61-c232-591d-08d484c09b07/a9fca2cd-e51b-c592-a371-08d484c179d2_720x430.jpg',
             channel: 'Google',
             created: new Date(),
-            tags: ['performance', 'branding'],
+            tags: 'performance, branding',
             budget: 10000,
-            publishDate: new Date(),
+            publishDate: '',
             userID: 'os@google.com'
         }
+    }
+
+    handleChange = (event) => {
+        const { content } = this.state
+        const newContent = { ...content }
+        newContent[event.target.name] = event.target.value
+        this.setState({ content: newContent })
+    }
+
+    handleSubmit = (event) => {
+        event.preventDefault()
+        const { content } = this.state
+        saveContent(content)
+            .then(r => {
+                console.log(r)
+                message.success('Saved Successfully')
+            }).catch(e => {
+                console.log(e)
+                message.error('Errooooooooor')
+            })
+    }
+
+    handleImage = (f) => {
+        const file = f.file.originFileObj
+        const { content } = this.state
+        const task = uploadFile(file)
+        task.on('state_changed', (snapshot) => {
+            console.log(snapshot)
+        }, (error) => { }, () => {
+            task.snapshot.ref.getDownloadURL()
+                .then(url => {
+                    content['imageURL'] = url
+                    this.setState({ content })
+                }).catch(e => {
+                    console.log(e)
+                })
+        })
+
     }
 
     render() {
@@ -24,7 +64,10 @@ export class ContentDetail extends Component {
         return (
             <div className="content-detail">
                 <article>
-                    <ContentForm />
+                    <ContentForm
+                        handleImage={this.handleImage}
+                        handleSubmit={this.handleSubmit}
+                        handleChange={this.handleChange} />
                 </article>
                 <article>
                     <ContentCard {...content} />

@@ -21,7 +21,7 @@ export class ContentCard extends Component {
                     {/* <span>publish: {publishDate}</span> */}
                     <span>{userID}</span>
                     <div>
-                        {tags.map((tag, key) => (
+                        {tags.split(',').map((tag, key) => (
                             <Tag key={key}>{tag}</Tag>
                         ))}
                     </div>

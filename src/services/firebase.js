@@ -1,6 +1,7 @@
 import firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firestore'
+import 'firebase/storage'
 
 
 const config = {
@@ -26,7 +27,7 @@ export const signup = (email, password) => {
                 email: r.user.email,
                 username: r.user.displayName || r.user.email,
                 photoURL: r.user.photoURL || '',
-                type:'operations'
+                type: 'operations'
             }
             userRef.doc(r.user.uid).set(user)
                 .then(res => {
@@ -56,4 +57,40 @@ export const logout = () => {
         }).catch(e => {
             throw e
         })
+}
+
+/* COntents Services*/
+
+const contentRef = db.collection('contents')
+
+//get All
+export const getContents = () => {
+    return contentRef.get()
+        .then(res => {
+            return res
+        }).catch(e => {
+            throw e
+        })
+}
+
+
+//create
+export const saveContent = (obj) => {
+    const id = contentRef.doc().id
+    obj['id'] = id
+    return contentRef.doc(id).set(obj)
+        .then(r => {
+            return r
+        }).catch(e => {
+            throw e
+        })
+}
+
+//upload Files
+const contentFilesRef = firebase.storage().ref()
+
+export const uploadFile = (file) => {
+    const id = contentRef.doc().id
+    const task = contentFilesRef.child('contents/' + id).put(file)
+    return task
 }
