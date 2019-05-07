@@ -4,6 +4,7 @@ import SignupComponent from './components/auth/SignupComponent'
 import LoginComponent from './components/auth/LoginComponent'
 import ContentsList from './components/contents/ContentsList';
 import ContentDetail from './components/contents/ContentDetail';
+import ProfilePage from './components/user/ProfilePage';
 
 
 export class Routes extends Component {
@@ -15,6 +16,7 @@ export class Routes extends Component {
                 <Route exact path="/contents" component={ContentsList} />
                 <Route exact path="/contents/new" component={ContentDetail} />
                 <Route path="/content/:id" component={ContentDetail} />
+                <Route path="/profile/" component={ProfilePage} />
             </Switch>
         )
     }

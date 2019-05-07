@@ -28,6 +28,8 @@ export class Navbar extends Component {
                     <Link to="/contents">Contents</Link>
                     <Divider type="vertical" />
                     <Link to="/contents/new">New Content</Link>
+                    <Divider type="vertical" />
+                    <Link to="/profile">Profile</Link>
                 </nav>
             </div>
         )

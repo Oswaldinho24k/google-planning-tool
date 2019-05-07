@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { getContents } from '../../services/firebase'
+import { getContents, checkIfUser } from '../../services/firebase'
 import { Link } from 'react-router-dom'
 
 export class ContentsList extends Component {
@@ -9,6 +9,8 @@ export class ContentsList extends Component {
   }
 
   componentWillMount() {
+
+
     getContents()
       .then(snapshot => {
         const { contents } = this.state

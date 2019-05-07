@@ -59,6 +59,12 @@ export const logout = () => {
         })
 }
 
+export const checkIfUser = (fun) => {
+    return firebase.auth().onAuthStateChanged(fun)
+}
+
+
+
 /* COntents Services*/
 
 const contentRef = db.collection('contents')
@@ -73,12 +79,35 @@ export const getContents = () => {
         })
 }
 
+export const getContentsByUser = (userID) => {
+    return contentRef.where('userID', '==', userID).get()
+        .then(r => {
+            return r
+        }).catch(e => {
+            throw e
+        })
+}
+
+//get by ID
+export const getContentById = (id) => {
+    return contentRef.doc(id).get()
+        .then(r => {
+            return r
+        }).catch(e => {
+            throw e
+        })
+}
+
+
 
 //create
 export const saveContent = (obj) => {
-    const id = contentRef.doc().id
-    obj['id'] = id
-    return contentRef.doc(id).set(obj)
+
+    if (!obj.id) {
+        const id = contentRef.doc().id
+        obj['id'] = id
+    }
+    return contentRef.doc(obj.id).set(obj)
         .then(r => {
             return r
         }).catch(e => {

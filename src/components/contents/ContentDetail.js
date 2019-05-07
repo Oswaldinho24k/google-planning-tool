@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import ContentForm from './ContentForm';
 import ContentCard from './ContentCard';
 import './contents.css'
-import { saveContent, uploadFile } from '../../services/firebase'
+import { saveContent, uploadFile, checkIfUser, getContentById } from '../../services/firebase'
 import { message } from 'antd';
 
 
@@ -17,7 +17,33 @@ export class ContentDetail extends Component {
             tags: 'performance, branding',
             budget: 10000,
             publishDate: '',
-            userID: 'os@google.com'
+            userID: '',
+            userEmail: 'os@google.com'
+        },
+        user: null
+    }
+
+    componentWillMount() {
+        checkIfUser((user) => {
+            this.setState({ user })
+            if (!user) {
+                this.props.history.push('/login')
+            } else {
+                const { content } = this.state
+                content['userID'] = user.uid
+                content['userEmail'] = user.email
+                this.setState({ content })
+            }
+        })
+
+        const { id } = this.props.match.params
+        if (id) {
+            getContentById(id)
+                .then(r => {
+                    this.setState({ content: r.data() })
+                }).catch(e => {
+                    console.log(e)
+                })
         }
     }
 
@@ -67,7 +93,8 @@ export class ContentDetail extends Component {
                     <ContentForm
                         handleImage={this.handleImage}
                         handleSubmit={this.handleSubmit}
-                        handleChange={this.handleChange} />
+                        handleChange={this.handleChange}
+                        {...content} />
                 </article>
                 <article>
                     <ContentCard {...content} />
