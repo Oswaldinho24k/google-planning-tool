@@ -9,8 +9,6 @@ export class ContentsList extends Component {
   }
 
   componentWillMount() {
-
-
     getContents()
       .then(snapshot => {
         const { contents } = this.state

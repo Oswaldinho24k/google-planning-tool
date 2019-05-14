@@ -27,6 +27,8 @@ export class Navbar extends Component {
                     <Divider type="vertical" />
                     <Link to="/contents">Contents</Link>
                     <Divider type="vertical" />
+                    <Link to="/calendar">Calendar</Link>
+                    <Divider type="vertical" />
                     <Link to="/contents/new">New Content</Link>
                     <Divider type="vertical" />
                     <Link to="/profile">Profile</Link>

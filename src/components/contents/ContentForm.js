@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import { Input, Button, Upload, Icon } from 'antd'
+import { Input, Button, Upload, Icon, DatePicker } from 'antd'
 
 export class ContentForm extends Component {
     render() {
 
-        const { handleChange, handleSubmit, handleImage, text, imageURL, channel, created, tags, budget, publishDate, userID, userEmail } = this.props
+        const { handleDate, handleChange, handleSubmit, handleImage, text, imageURL, channel, created, tags, budget, publishDate, userID, userEmail } = this.props
         return (
             <form onSubmit={handleSubmit}>
                 <Input name="text" placeholder="Info of the post" onChange={handleChange} value={text} />
@@ -16,6 +16,7 @@ export class ContentForm extends Component {
                         <Icon type="upload" /> Click to Upload
                     </Button>
                 </Upload>
+                <DatePicker onChange={handleDate} />
                 <Button htmlType="submit">Save Post</Button>
             </form>
         )

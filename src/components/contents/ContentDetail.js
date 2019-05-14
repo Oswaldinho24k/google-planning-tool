@@ -66,6 +66,12 @@ export class ContentDetail extends Component {
                 message.error('Errooooooooor')
             })
     }
+    handleDate=(moment, string)=>{
+        const {content} = this.state
+        const obj = {...content}
+        obj['publishDate'] = string
+        this.setState({content:obj})
+    }
 
     handleImage = (f) => {
         const file = f.file.originFileObj
@@ -91,6 +97,7 @@ export class ContentDetail extends Component {
             <div className="content-detail">
                 <article>
                     <ContentForm
+                        handleDate={this.handleDate}
                         handleImage={this.handleImage}
                         handleSubmit={this.handleSubmit}
                         handleChange={this.handleChange}
