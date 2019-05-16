@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { logout } from '../services/firebase'
 import { message, Divider } from 'antd'
 
+
 export class Navbar extends Component {
 
     logout = () => {
@@ -14,7 +15,7 @@ export class Navbar extends Component {
 
     render() {
         return (
-            <div>
+            <div className="google__navbar"> 
                 <nav>
                     <Link to="/">Home</Link>
                     <Divider type="vertical" />

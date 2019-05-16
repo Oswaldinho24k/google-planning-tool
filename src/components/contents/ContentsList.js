@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { getContents, checkIfUser } from '../../services/firebase'
 import { Link } from 'react-router-dom'
+import {Row, Col, Card} from 'antd'
 
 export class ContentsList extends Component {
 
@@ -25,11 +26,17 @@ export class ContentsList extends Component {
   render() {
     const { contents } = this.state
     return (
-      <div>
+      <Row gutter={16} style={{padding:'1% 10%'}}>
         {contents.map((c, key) => (
-          <Link key={key} to={`/content/${c.id}`}>{c.text}</Link>
+          <Col span={8} key={key} >
+            <Card 
+              style={{margin:'10px 0'}}
+              cover={<img style={{width:'100%', height:'200px'}} alt="example" src={c.imageURL} />}>
+              <Link to={`/content/${c.id}`}>{c.text}</Link>
+            </Card>
+          </Col>
         ))}
-      </div>
+      </Row>
     )
   }
 }

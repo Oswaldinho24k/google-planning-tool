@@ -1,33 +1,46 @@
-.App {
-  text-align: center;
+/*
+navbar
+*/
+.google__navbar{
+  height: 64px;
+  width: 100%;  
+  padding: 0 10%;
 }
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+.google__navbar nav{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
+/*landing page*/
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+#main__section{
+  width:100%;
+  height: calc(100vh - 64px);
+  background-image: url('https://images.pexels.com/photos/905163/pexels-photo-905163.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+  background-size: cover;
+  background-position: left;
+  background-attachment: fixed;
+  background-repeat: no-repeat;  
+}
+#main__section > div {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255,255,255,.5);
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: flex-start;
+  padding: 10%;
+  display: flex;
+  justify-content: center;
+  align-content: space-around;
+  width: auto;
 }
-
-.App-link {
-  color: #61dafb;
+#main__section > div h1{
+  font-size: 4rem;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#main__section > div p{
+  font-size: 2rem;
 }

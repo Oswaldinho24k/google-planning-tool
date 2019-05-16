@@ -7,6 +7,7 @@ import ContentDetail from './components/contents/ContentDetail';
 import ProfilePage from './components/user/ProfilePage';
 import Home from './components/Home';
 import ContentCalendar from './components/contents/ContentCalendar';
+import ContentCreate from './components/contents/ContentCreate';
 
 
 export class Routes extends Component {
@@ -17,7 +18,7 @@ export class Routes extends Component {
                 <Route path="/signup" component={SignupComponent} />
                 <Route path="/login" component={LoginComponent} />
                 <Route exact path="/contents" component={ContentsList} />
-                <Route exact path="/contents/new" component={ContentDetail} />
+                <Route exact path="/contents/new" component={ContentCreate} />
                 <Route exact path="/content/:id" component={ContentDetail} />
                 <Route path="/profile" component={ProfilePage} />
                 <Route path="/calendar" component={ContentCalendar} />

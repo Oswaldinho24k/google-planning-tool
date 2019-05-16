@@ -32,13 +32,15 @@ export class LoginComponent extends Component {
         return (
             <div className="signup__section">
                 <div>
-                    <form onSubmit={this.handleSubmit}>
-                        <Input type="email" onChange={this.handleChange} name="email" />
-                        <Input type="password" onChange={this.handleChange} name="password" />
+                   <div>
+                   <form onSubmit={this.handleSubmit}>
+                        <Input type="email" onChange={this.handleChange} name="email" placeholder='email'/>
+                        <Input type="password" onChange={this.handleChange} name="password" placeholder='password'/>
                         <Button htmlType="submit" block>Login</Button>
                     </form>
                     <Divider />
-                    <Button type="danger" block>Signup with Google</Button>
+                    <Button type="danger" block>Login with Google</Button>
+                   </div>
                 </div>
             </div>
         )
