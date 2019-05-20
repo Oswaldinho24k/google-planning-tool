@@ -7,6 +7,11 @@ import {withRouter} from 'react-router-dom'
 
 
 class App extends  Component{
+  
+  componentWillMount(){
+    
+  }
+
   render(){
     console.log(this.props)
     return (

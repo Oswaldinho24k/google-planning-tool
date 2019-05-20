@@ -1,0 +1,18 @@
+[debug] [2019-05-20T16:41:20.662Z] ----------------------------------------------------------------------
+[debug] [2019-05-20T16:41:20.665Z] Command:       /Users/oswaldinho24k/.nvm/versions/node/v10.15.3/bin/node /Users/oswaldinho24k/.nvm/versions/node/v10.15.3/bin/firebase deploy --only functions
+[debug] [2019-05-20T16:41:20.665Z] CLI Version:   6.9.2
+[debug] [2019-05-20T16:41:20.665Z] Platform:      darwin
+[debug] [2019-05-20T16:41:20.665Z] Node Version:  v10.15.3
+[debug] [2019-05-20T16:41:20.670Z] Time:          Mon May 20 2019 11:41:20 GMT-0500 (Central Daylight Time)
+[debug] [2019-05-20T16:41:20.670Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-05-20T16:41:20.687Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-05-20T16:41:20.687Z] > authorizing via signed-in user
+[debug] [2019-05-20T16:41:20.687Z] [iam] checking project iron-a8d8e for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2019-05-20T16:41:20.689Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2019-05-20T16:41:20.689Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2019-05-20T16:41:21.081Z] <<< HTTP RESPONSE 200
+[debug] [2019-05-20T16:41:21.098Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/iron-a8d8e:testIamPermissions  
+
+[debug] [2019-05-20T16:41:21.476Z] <<< HTTP RESPONSE 200
